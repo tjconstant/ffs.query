@@ -1,4 +1,4 @@
-get_league_history <- function(league_id){
+get_league_history <- function(league_id, start_gw = NULL){
 
   league_details <- get_league(league_id)
 
@@ -6,7 +6,7 @@ get_league_history <- function(league_id){
 
   for(player_id in league_details$entry){
     history <- dplyr::bind_rows(history,
-                                get_manager_history(player_id))
+                                get_manager_history(player_id, start_gw))
   }
 
   dplyr::bind_cols(league_name = league_details$league_name,

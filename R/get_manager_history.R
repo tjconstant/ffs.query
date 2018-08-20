@@ -1,9 +1,12 @@
-get_manager_history <- function(id){
+get_manager_history <- function(id, start_gw = NULL){
 
   manager_details <- get_manager_details(id)
 
   current_gw <- get_current_gw()
-  start_gw <- as.numeric(manager_details$start_week)
+  if(is.null(start_gw)){
+    start_gw <- as.numeric(manager_details$start_week)
+  }
+
   history <- tibble::tibble()
 
 

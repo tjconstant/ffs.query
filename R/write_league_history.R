@@ -1,4 +1,4 @@
-write_league_history <- function(league_ids, filename = "data-raw/master.rds"){
+write_league_history <- function(league_ids, filename = "data-raw/master.csv"){
 
   history <- tibble::tibble()
 
@@ -6,6 +6,6 @@ write_league_history <- function(league_ids, filename = "data-raw/master.rds"){
     history <- dplyr::bind_rows(history, get_league_history(leage_id))
   }
 
-  readr::write_rds(x = history, path = filename)
+  readr::write_csv(x = history, path = filename)
 
 }
